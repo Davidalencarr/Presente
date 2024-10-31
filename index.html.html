@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Tempo Juntos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e9;
+            background-image: radial-gradient(circle, #ffccd5, #ffc1c9, #ffb3bd, #ffa1b0, #ff8ea3);
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ff6f91;
+            max-width: 400px;
+        }
+        h1 {
+            color: #ff6f91;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #contador {
+            font-size: 1.5em;
+            color: #333;
+        }
+        .heart {
+            font-size: 3em;
+            color: #ff6f91;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+        .imagem {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        audio {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>Nosso Tempo Juntos</h1>
+        <p id="contador">Calculando...</p>
+        <div class="heart">❤️</div>
+        
+        <!-- Adicione sua imagem aqui -->
+        <img src="amor.jpg" alt="Nossa foto juntos" class="imagem">
+        
+        <!-- Música de fundo -->
+        <audio controls autoplay loop>
+            <source src="James Arthur - Naked (Audio).mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+
+    <script>
+        // Data de início: coloque a data e hora que vocês começaram a contar o tempo juntos
+        const startDate = new Date("2022-03-01T21:45:00"); 
+
+        function atualizarContador() {
+            const agora = new Date();
+            const diferenca = agora - startDate;
+
+            const anos = Math.floor(diferenca / (1000 * 60 * 60 * 24 * 365));
+            const meses = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            const dias = Math.floor((diferenca % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+            document.getElementById("contador").innerHTML = 
+                `${anos} anos, ${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos`;
+        }
+
+        // Atualiza o contador a cada segundo
+        setInterval(atualizarContador, 1000);
+    </script>
+</body>
+</html>
